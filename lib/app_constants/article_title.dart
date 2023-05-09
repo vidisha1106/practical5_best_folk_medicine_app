@@ -25,3 +25,14 @@ class ArticleContent
   "\n -> Best Capsules: Balance of Nature Fruit and Vegetables"
   "\n -> Best for Immunity: Swolverine Greens + Reds";
 }
+
+class ProductTitle
+{
+    static const String product1="Organic Black Cumin Oil";
+    static const String product2="Skin Medica";
+    static const String product3="LifeTakt AloeVera";
+    static const String product4="Samarth Baby Care";
+    static const String product5="Gold Elements";
+    static const String product6="Dove";
+    static const String product7="Avalon Organics";
+}

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
 import 'package:practical5_best_folk_medicine_app/favourite.dart';
 import 'package:practical5_best_folk_medicine_app/home.dart';
-import 'package:practical5_best_folk_medicine_app/search.dart';
 import 'package:practical5_best_folk_medicine_app/settings.dart';
 import 'package:practical5_best_folk_medicine_app/store.dart';
 
@@ -44,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
     MyStorePage(),
     MyFavouritePage(),
     MySettingsPage(),
-    MySearchPage()
   ];
 
   int cIndex=0;
@@ -88,10 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: "Settings"
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: "Search"
           ),
         ]
         )

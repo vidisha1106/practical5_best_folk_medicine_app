@@ -12,4 +12,10 @@ class Images{
   static const String news="assets/images/news.jpeg";
   static const String tips="assets/images/tips.jpeg";
   static const String productImage1="assets/images/productimage1.jpeg";
+  static const String productImage2="assets/images/product2.jpg";
+  static const String productImage3="assets/images/allemarken.png";
+  static const String productImage4="assets/images/Cosmetics-Baby-Products-PNG-Download-Image.png";
+  static const String productImage5="assets/images/cream.jpg";
+  static const String productImage6="assets/images/dove.png";
+  static const String productImage7="assets/images/skin-care-products-png-3.png";
 }
