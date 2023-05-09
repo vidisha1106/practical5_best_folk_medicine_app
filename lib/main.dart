@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
+import 'package:practical5_best_folk_medicine_app/favourite.dart';
+import 'package:practical5_best_folk_medicine_app/home.dart';
+import 'package:practical5_best_folk_medicine_app/search.dart';
+import 'package:practical5_best_folk_medicine_app/settings.dart';
+import 'package:practical5_best_folk_medicine_app/store.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,21 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int cIndex=0;
 
   List<String> bottomNavigationBarItem=["Home","Store","Favourite","Settings","Search"];
-
-  List<String> chipCategories = [
-    'Drinks & Smoothies',
-    'Family',
-    'Fitness & Beauty',
-    'Food',
-    'Fruits & Veggies',
-    "Grandma's Remedies",
-    'Health & Fitness',
-    'Healthy Food',
-    'Healthy News',
-    'Healthy Tips',
-  ];
-  Color chipColor = Colors.black;
-  String? chip = 'Family';
 
   @override
   Widget build(BuildContext context) {

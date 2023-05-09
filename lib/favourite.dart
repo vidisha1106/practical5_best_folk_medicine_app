@@ -1,3 +1,6 @@
+
+import 'package:flutter/material.dart';
+
 class MyFavouritePage extends StatefulWidget {
   const MyFavouritePage({Key? key}) : super(key: key);
 
@@ -11,3 +14,4 @@ class _MyFavouritePageState extends State<MyFavouritePage> {
     return const Placeholder();
   }
 }
+
