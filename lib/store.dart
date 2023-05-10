@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
+import 'package:practical5_best_folk_medicine_app/app_constants/article_title.dart';
+import 'package:practical5_best_folk_medicine_app/model/productModel.dart';
 
 class MyStorePage extends StatefulWidget {
   const MyStorePage({Key? key}) : super(key: key);
@@ -10,6 +12,34 @@ class MyStorePage extends StatefulWidget {
 }
 
 class _MyStorePageState extends State<MyStorePage> {
+
+  List<ProductModel> products = [
+    ProductModel(
+      image: Images.productImage1,
+      productTitle: ProductTitle.product1,
+    ),
+    ProductModel(
+      image: Images.productImage2,
+      productTitle: ProductTitle.product2,
+    ),
+    ProductModel(
+      image: Images.productImage3,
+      productTitle: ProductTitle.product3,
+    ),
+    ProductModel(
+      image: Images.productImage4,
+      productTitle: ProductTitle.product4,
+    ),
+  ];
+
+  List filteredProducts = [];
+
+  @override
+  void initState() {
+    filteredProducts = products;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,12 +77,25 @@ class _MyStorePageState extends State<MyStorePage> {
                 onTapOutside: (event) {
                   FocusScope.of(context).unfocus();
                 },
+                onChanged: (value){
+                  setState(() {
+                    filteredProducts = [];
+                  });
+                  products.forEach((product){
+                    if(product.productTitle.toLowerCase().contains(value.toLowerCase())){
+                      setState(() {
+                        filteredProducts.add(product);
+                      });
+                    }
+                  });
+                },
                 textInputAction: TextInputAction.done,
                 inputFormatters: [
                   FilteringTextInputFormatter.singleLineFormatter
                 ],
                 keyboardAppearance: Brightness.dark,
                 decoration: const InputDecoration(
+                  //isDense: true,
                   enabledBorder:
                       OutlineInputBorder(borderSide: BorderSide.none),
                   focusedBorder:
@@ -66,24 +109,62 @@ class _MyStorePageState extends State<MyStorePage> {
               ),
             ),
           ),
-          OutlinedButton(
+          Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 25.0,bottom: 10),
-              child: Column(
-                children: [
-                  Image.asset(Images.productImage1, height: 250),
-                  Text(
-                    "Organic Black Cumin Oil",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18,color: Colors.black54),
-                  )
-                ],
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 150 / 250,
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 15,
+                children: List.generate(
+                  filteredProducts.length,
+                  (index) => CustomOutlinedButton(image: filteredProducts[index].image,productTitle: filteredProducts[index].productTitle,),
+                ),
               ),
             ),
-            onPressed: () {},
           )
         ],
       ),
+    );
+  }
+}
+
+class CustomOutlinedButton extends StatelessWidget {
+   final String image;
+   final String productTitle;
+
+  const CustomOutlinedButton({
+    super.key,
+    required this.image,
+    required this.productTitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(flex: 4, child: Image.asset(image)),
+            SizedBox(
+              height: 15,
+            ),
+            Expanded(
+              flex: 1,
+              child: Text(
+                productTitle,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+            )
+          ],
+        ),
+      ),
+      onPressed: () {},
     );
   }
 }

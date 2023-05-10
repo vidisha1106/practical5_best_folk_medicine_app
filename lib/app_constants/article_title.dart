@@ -25,3 +25,13 @@ class ArticleContent
   "\n -> Best Capsules: Balance of Nature Fruit and Vegetables"
   "\n -> Best for Immunity: Swolverine Greens + Reds";
 }
+
+class ProductTitle
+{
+  static const product1="Organic Black Cumin Oil";
+  static const product2="Himalaya Ashvagandha";
+  static const product3="Dettol";
+  static const product4="mamaEarth";
+}
+
+// List products = ["Organic Black Cumin Oil","Himalaya Ashvagandha","Dettol","mamaEarth"];
