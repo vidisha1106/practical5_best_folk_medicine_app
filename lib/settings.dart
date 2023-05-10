@@ -15,13 +15,13 @@ class _MySettingsPageState extends State<MySettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 8.0),
           child: Text("Settings"),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
             fontFamily: 'Times New Roman',
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -30,18 +30,18 @@ class _MySettingsPageState extends State<MySettingsPage> {
       body: Stack(children: [
         Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Divider(
+            const Divider(
               endIndent: 10,
               indent: 10,
               height: 0,
             ),
             ListTile(
               style: ListTileStyle.list,
-              title: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+              title: const Padding(
+                padding: EdgeInsets.only(left: 8.0),
                 child: Text("Notifications"),
               ),
               trailing: CupertinoSwitch(
@@ -60,13 +60,13 @@ class _MySettingsPageState extends State<MySettingsPage> {
             ),
             ListTile(
                 style: ListTileStyle.list,
-                title: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
+                title: const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
                   child: Text("About the app"),
                 ),
                 trailing: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.arrow_forward_ios),
+                  icon: const Icon(Icons.arrow_forward_ios),
                 )),
           ],
         ),
@@ -78,10 +78,10 @@ class _MySettingsPageState extends State<MySettingsPage> {
             children: [
               TextButton(
                 onPressed: () {},
-                child: Text("Login"),
                 style: TextButton.styleFrom(foregroundColor: Colors.black),
+                child: const Text("Login"),
               ),
-              Divider(
+              const Divider(
                 endIndent: 10,
                 indent: 10,
                 color: Colors.black,
@@ -89,8 +89,8 @@ class _MySettingsPageState extends State<MySettingsPage> {
               ),
               TextButton(
                 onPressed: () {},
-                child: Text("Sign Up"),
                 style: TextButton.styleFrom(foregroundColor: Colors.black),
+                child: const Text("Sign Up"),
               ),
             ],
           ),

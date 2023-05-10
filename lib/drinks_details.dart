@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/article_title.dart';
 
 class MyDrinksDetails extends StatefulWidget {
-  const MyDrinksDetails({Key? key}) : super(key: key);
+
+  final String image;
+
+  const MyDrinksDetails({Key? key, required this.image}) : super(key: key);
 
   @override
   State<MyDrinksDetails> createState() => _MyDrinksDetailsState();
@@ -45,9 +47,12 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              Images.fruits,
-              fit: BoxFit.contain,
+            Hero(
+              tag: widget.image,
+              child: Image.asset(
+                widget.image,
+                fit: BoxFit.contain,
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),

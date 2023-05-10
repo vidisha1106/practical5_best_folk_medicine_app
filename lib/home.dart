@@ -12,7 +12,10 @@ class MyAppHomePage extends StatefulWidget {
   State<MyAppHomePage> createState() => _MyAppHomePageState();
 }
 
-class _MyAppHomePageState extends State<MyAppHomePage> {
+class _MyAppHomePageState extends State<MyAppHomePage>  {
+
+
+
   List<String> chipCategories = [
     'Drinks & Smoothies',
     'Family',
@@ -452,14 +455,15 @@ class Articles extends StatelessWidget {
       elevation: 10,
       child: InkWell(
         onTap: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context) => const MyDrinksDetails()));
+          Navigator.push(context,MaterialPageRoute(builder: (context) => MyDrinksDetails(image: data.image,)));
         },
         child: SizedBox(
           height: 300,
           width: 300,
           child: Column(
             children: [
-              Image.asset(data.image, height: 200, fit: BoxFit.cover,),
+              Hero(tag: data.image,
+              child: Image.asset(data.image, height: 200, fit: BoxFit.cover,)),
               Padding(
                 padding: const EdgeInsets.all(13),
                 child: Column(

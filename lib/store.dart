@@ -14,19 +14,19 @@ class MyStorePage extends StatefulWidget {
 class _MyStorePageState extends State<MyStorePage> {
 
   List<ProductModel> products = [
-    ProductModel(
+    const ProductModel(
       image: Images.productImage1,
       productTitle: ProductTitle.product1,
     ),
-    ProductModel(
+    const ProductModel(
       image: Images.productImage2,
       productTitle: ProductTitle.product2,
     ),
-    ProductModel(
+    const ProductModel(
       image: Images.productImage3,
       productTitle: ProductTitle.product3,
     ),
-    ProductModel(
+    const ProductModel(
       image: Images.productImage4,
       productTitle: ProductTitle.product4,
     ),
@@ -44,13 +44,13 @@ class _MyStorePageState extends State<MyStorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 8.0),
           child: Text("Shop"),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
             fontFamily: 'Times New Roman',
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -115,7 +115,7 @@ class _MyStorePageState extends State<MyStorePage> {
               child: GridView.count(
                 crossAxisCount: 2,
                 childAspectRatio: 150 / 250,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
@@ -150,7 +150,7 @@ class CustomOutlinedButton extends StatelessWidget {
         child: Column(
           children: [
             Expanded(flex: 4, child: Image.asset(image)),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Expanded(
@@ -158,7 +158,7 @@ class CustomOutlinedButton extends StatelessWidget {
               child: Text(
                 productTitle,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18, color: Colors.black54),
+                style: const TextStyle(fontSize: 18, color: Colors.black54),
               ),
             )
           ],

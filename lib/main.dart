@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
 import 'package:practical5_best_folk_medicine_app/favourite.dart';
 import 'package:practical5_best_folk_medicine_app/home.dart';
@@ -39,10 +38,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> pages = [
-    MyAppHomePage(),
-    MyStorePage(),
-    MyFavouritePage(),
-    MySettingsPage(),
+    const MyAppHomePage(),
+    const MyStorePage(),
+    const MyFavouritePage(),
+    const MySettingsPage(),
   ];
 
   int cIndex=0;
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         type: BottomNavigationBarType.fixed,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-          unselectedIconTheme: IconThemeData(
+          unselectedIconTheme: const IconThemeData(
             color: Colors.grey,
             size: 25,
           ),
@@ -75,15 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Image.asset(Images.home,height: 25,width: 25,color: Colors.grey),
             label: "Home",activeIcon: Image.asset(Images.home,height: 25,width: 25,color: Colors.black),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.local_grocery_store_sharp),
               label: "Store",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.star),
               label: "Favourite"
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: "Settings"
           ),

@@ -16,13 +16,13 @@ class _MyFavouritePageState extends State<MyFavouritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 8.0),
           child: Text("Favourites"),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
             fontFamily: 'Times New Roman',
             fontWeight: FontWeight.bold,
             color: Colors.black,
