@@ -63,7 +63,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                 padding: const EdgeInsets.only(
                     top: 25, bottom: 5, right: 25, left: 25),
                 child: Container(
-                  height: 75,
+                  height: 50,
                   decoration: const BoxDecoration(boxShadow: [
                     BoxShadow(
                         color: Color(0xffe4e4e4),
@@ -93,6 +93,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                       filled: true,
                       hintText: "Search",
                       hintStyle: TextStyle(color: Colors.grey),
+                      isDense: true
                     ),
                   ),
                 ),
@@ -141,7 +142,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
-                          fontSize: 18,
+                          fontSize: 15,
                         ),
                       ),
                     ),
@@ -151,7 +152,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                         onPressed: () {},
                         child: const Text("See more",
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 13,
                                 color: Colors.grey,
                                 fontWeight: FontWeight.normal)),
                       ),
@@ -160,7 +161,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                 ),
               ),
               SizedBox(
-                height: 380,
+                height: 335,
                 child: ListView.builder(
                   itemCount: listOfArticleData.length,
                   scrollDirection: Axis.horizontal,
@@ -185,7 +186,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w600,
-                          fontSize: 18,
+                          fontSize: 15,
                         ),
                       ),
                     ),
@@ -195,7 +196,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                         onPressed: () {},
                         child: const Text("See more",
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 13,
                                 color: Colors.grey,
                                 fontWeight: FontWeight.normal)),
                       ),
@@ -455,15 +456,16 @@ class Articles extends StatelessWidget {
       elevation: 10,
       child: InkWell(
         onTap: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context) => MyDrinksDetails(image: data.image,)));
+          Navigator.pushNamed(context,'/ArticleDetails',arguments: data.image);
+          //Navigator.push(context,MaterialPageRoute(builder: (context) => MyDrinksDetails(image: data.image,)));
         },
         child: SizedBox(
-          height: 300,
-          width: 300,
+          height: 200,
+          width: 250,
           child: Column(
             children: [
               Hero(tag: data.image,
-              child: Image.asset(data.image, height: 200, fit: BoxFit.cover,)),
+              child: Image.asset(data.image, height: 175, fit: BoxFit.cover,)),
               Padding(
                 padding: const EdgeInsets.all(13),
                 child: Column(
@@ -476,12 +478,12 @@ class Articles extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w300,
-                            fontSize: 16,
+                            fontSize: 15,
                             fontFamily: 'Helvetica'
                           ),
                         ),
                         Text(data.time,
-                            style: const TextStyle(fontSize: 13, color: Colors.grey))
+                            style: const TextStyle(fontSize: 10, color: Colors.grey))
                       ],
                     ),
                     const SizedBox(
@@ -493,7 +495,7 @@ class Articles extends StatelessWidget {
                         color: Colors.black,
                         fontFamily: 'Lucian',
                         fontWeight: FontWeight.w500,
-                        fontSize: 25,
+                        fontSize: 20,
                       ),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,

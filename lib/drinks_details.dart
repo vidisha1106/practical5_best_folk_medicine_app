@@ -3,9 +3,7 @@ import 'package:practical5_best_folk_medicine_app/app_constants/article_title.da
 
 class MyDrinksDetails extends StatefulWidget {
 
-  final String image;
-
-  const MyDrinksDetails({Key? key, required this.image}) : super(key: key);
+  const MyDrinksDetails({Key? key}) : super(key: key);
 
   @override
   State<MyDrinksDetails> createState() => _MyDrinksDetailsState();
@@ -13,10 +11,14 @@ class MyDrinksDetails extends StatefulWidget {
 
 class _MyDrinksDetailsState extends State<MyDrinksDetails> {
 
+
+
   bool favourite=false;
+
 
   @override
   Widget build(BuildContext context) {
+    var arg=ModalRoute.of(context)?.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Back"),
@@ -48,9 +50,9 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Hero(
-              tag: widget.image,
+              tag: arg!,
               child: Image.asset(
-                widget.image,
+                arg as String,
                 fit: BoxFit.contain,
               ),
             ),
