@@ -15,6 +15,7 @@ class CustomTransition extends PageRouteBuilder {
             transitionDuration: Duration(seconds: 1),
             reverseTransitionDuration: Duration(seconds: 1),
             barrierColor: Colors.red,
+            settings: RouteSettings(arguments: counter),
             transitionsBuilder: (BuildContext context,
                     Animation<double> animation,
                     Animation<double> secondaryAnimation,

@@ -4,7 +4,6 @@ import 'package:practical5_best_folk_medicine_app/favourite.dart';
 import 'package:practical5_best_folk_medicine_app/home.dart';
 import 'package:practical5_best_folk_medicine_app/practical_6/decrement.dart';
 import 'package:practical5_best_folk_medicine_app/practical_6/increment.dart';
-import 'package:practical5_best_folk_medicine_app/practical_6/navigator_observer.dart';
 import 'package:practical5_best_folk_medicine_app/settings.dart';
 import 'package:practical5_best_folk_medicine_app/store.dart';
 
@@ -51,7 +50,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with RouteAware{
 
   List<Widget> pages = [
     const MyAppHomePage(),

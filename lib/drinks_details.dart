@@ -49,6 +49,8 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            ///Hero Widget Used
             Hero(
               tag: arg!,
               child: Image.asset(
@@ -56,6 +58,8 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
                 fit: BoxFit.contain,
               ),
             ),
+
+            ///Content Title
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: Text(
@@ -88,6 +92,8 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
                 ),
                 const Text("6 hours ago",
                     style: TextStyle(fontSize: 15, color: Colors.grey)),
+
+                ///Favourite icon Button
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -98,6 +104,8 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
                 )
               ],
             ),
+
+            ///Content Description
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: Text(

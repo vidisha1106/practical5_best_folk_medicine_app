@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:practical5_best_folk_medicine_app/main.dart';
+import 'package:practical5_best_folk_medicine_app/practical_6/increment.dart';
 
 class DecrementScreen extends StatefulWidget with RouteAware {
   const DecrementScreen({Key? key}) : super(key: key);
@@ -8,19 +11,19 @@ class DecrementScreen extends StatefulWidget with RouteAware {
   State<DecrementScreen> createState() => _DecrementScreenState();
 }
 
-class _DecrementScreenState extends State<DecrementScreen>{
+class _DecrementScreenState extends State<DecrementScreen> with RouteAware{
 
-  String textCounter="0";
-  int counter=0;
+  // String textCounter=counter.toString();
 
-
-
+  ///Decrement counter
   void decrement()
   {
     setState(() {
       counter--;
     });
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +44,7 @@ class _DecrementScreenState extends State<DecrementScreen>{
               Text("Counter",
                   style: TextStyle(color: Colors.black, fontSize: 20)),
               SizedBox(height: 5),
-              Text(textCounter,
+              Text(counter.toString(),
                   style: TextStyle(color: Colors.black, fontSize: 25)),
             ],
           ),
@@ -49,6 +52,8 @@ class _DecrementScreenState extends State<DecrementScreen>{
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+
+          ///Home Button
           FloatingActionButton(
             heroTag: null,
             onPressed: () {
@@ -59,11 +64,13 @@ class _DecrementScreenState extends State<DecrementScreen>{
             elevation: 5,
           ),
           SizedBox(width: 5,),
+
+          ///Decrement Button
           FloatingActionButton(
             onPressed: () {
-              decrement();
               setState(() {
-                textCounter=counter.toString();
+              decrement();
+                // textCounter=counter.toString();
               });
             },
             child: Text("-", style: TextStyle(fontSize: 40,fontWeight: FontWeight.w500)),
@@ -72,5 +79,32 @@ class _DecrementScreenState extends State<DecrementScreen>{
         ],
       ),
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    counter=ModalRoute.of(context)!.settings.arguments as int;
+    routeObserver.subscribe(this,ModalRoute.of(context) as PageRoute);
+  }
+
+  @override
+  void didPush() {
+    debugPrint("on did push");
+    bool isEqual= counter==ModalRoute.of(context)?.settings.arguments as int;
+    debugPrint("Counter Value is Valid : $isEqual");
+  }
+
+  @override
+  void didPop() {
+    debugPrint("on did pop");
+    bool isEqual= counter==ModalRoute.of(context)?.settings.arguments as int;
+    debugPrint("Counter Value is Valid : $isEqual");
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
   }
 }

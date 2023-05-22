@@ -38,6 +38,8 @@ class _MySettingsPageState extends State<MySettingsPage> {
               indent: 10,
               height: 0,
             ),
+
+            ///Notifications
             ListTile(
               style: ListTileStyle.list,
               title: const Padding(
@@ -53,11 +55,15 @@ class _MySettingsPageState extends State<MySettingsPage> {
                 },
               ),
             ),
+
+            ///Divider
             const Divider(
               height: 0,
               indent: 10,
               endIndent: 10,
             ),
+
+            ///About the App
             ListTile(
                 style: ListTileStyle.list,
                 title: const Padding(
@@ -76,17 +82,23 @@ class _MySettingsPageState extends State<MySettingsPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
+
+              ///Login Button
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(foregroundColor: Colors.black),
                 child: const Text("Login"),
               ),
+
+              ///Divider
               const Divider(
                 endIndent: 10,
                 indent: 10,
-                color: Colors.black,
+                color: Colors.grey,
                 height: 0,
               ),
+
+              ///Signup Button
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(foregroundColor: Colors.black),

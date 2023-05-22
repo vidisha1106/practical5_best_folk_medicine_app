@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practical5_best_folk_medicine_app/practical_6/custom_transition.dart';
 import 'package:practical5_best_folk_medicine_app/practical_6/decrement.dart';
 
-class IncrementScreen extends StatefulWidget with RouteAware{
-
+class IncrementScreen extends StatefulWidget with RouteAware {
   const IncrementScreen({Key? key}) : super(key: key);
 
   @override
@@ -13,12 +12,12 @@ class IncrementScreen extends StatefulWidget with RouteAware{
 int counter = 0;
 
 class _IncrementScreenState extends State<IncrementScreen> {
+  // String textCounter = counter.toString();
 
-  String textCounter = "0";
-
+  ///Method for incrementing Counter
   void increment() {
     setState(() {
-    counter++;
+      counter++;
     });
   }
 
@@ -36,10 +35,17 @@ class _IncrementScreenState extends State<IncrementScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
+            ///Counter Label
             Text("Counter",
                 style: TextStyle(color: Colors.black, fontSize: 20)),
-            SizedBox(height: 5,),
-            Text(textCounter,
+            SizedBox(
+              height: 5,
+            ),
+
+
+            ///Counter Text
+            Text(counter.toString(),
                 style: TextStyle(color: Colors.black, fontSize: 25)),
           ],
         ),
@@ -47,24 +53,31 @@ class _IncrementScreenState extends State<IncrementScreen> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+
+          ///Increment Button
           FloatingActionButton(
             heroTag: null,
             onPressed: () {
               setState(() {
                 increment();
-                textCounter = counter.toString();
               });
             },
-            child: Text("+", style: TextStyle(fontSize: 40,fontWeight: FontWeight.w500)),
+            child: Text("+",
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500)),
             elevation: 5,
           ),
           SizedBox(width: 5),
+
+          ///Decrement Button
           FloatingActionButton(
             heroTag: null,
-            onPressed: () {
-              Navigator.of(context).push(CustomTransition(child: DecrementScreen()));
+            onPressed: () async {
+              await Navigator.of(context)
+                  .push(CustomTransition(child: DecrementScreen()));
+              setState(() {});
             },
-            child: Text("-", style: TextStyle(fontSize: 40,fontWeight: FontWeight.w500)),
+            child: Text("-",
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500)),
             elevation: 5,
           ),
         ],
@@ -72,4 +85,3 @@ class _IncrementScreenState extends State<IncrementScreen> {
     );
   }
 }
-

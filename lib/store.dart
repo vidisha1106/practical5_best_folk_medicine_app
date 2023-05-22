@@ -13,6 +13,7 @@ class MyStorePage extends StatefulWidget {
 
 class _MyStorePageState extends State<MyStorePage> {
 
+  ///List of Products
   List<ProductModel> products = [
     const ProductModel(
       image: Images.productImage1,
@@ -32,6 +33,8 @@ class _MyStorePageState extends State<MyStorePage> {
     ),
   ];
 
+
+  ///List of Filtered Products
   List filteredProducts = [];
 
   @override
@@ -60,9 +63,11 @@ class _MyStorePageState extends State<MyStorePage> {
         children: [
           Padding(
             padding:
-                const EdgeInsets.only(top: 25, bottom: 5, right: 25, left: 25),
+                const EdgeInsets.only(top: 10, bottom: 5, right: 25, left: 25),
+
+            ///Search TextField
             child: Container(
-              height: 75,
+              height: 70,
               decoration: const BoxDecoration(boxShadow: [
                 BoxShadow(
                     color: Color(0xffe4e4e4),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:practical5_best_folk_medicine_app/drinks_details.dart';
 import 'app_constants/article_title.dart';
 import 'app_constants/app_images.dart';
 import 'model/ArticleData.dart';
@@ -13,8 +12,6 @@ class MyAppHomePage extends StatefulWidget {
 }
 
 class _MyAppHomePageState extends State<MyAppHomePage>  {
-
-
 
   List<String> chipCategories = [
     'Drinks & Smoothies',
@@ -34,6 +31,8 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      ///App Title
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -43,7 +42,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
             statusBarIconBrightness: Brightness.dark),
         centerTitle: true,
         title: const Padding(
-          padding: EdgeInsets.only(top: 25.0),
+          padding: EdgeInsets.only(top: 20.0),
           child: Text(
             "Best Folk Medicine",
             style: TextStyle(
@@ -61,7 +60,9 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 25, bottom: 5, right: 25, left: 25),
+                    top: 15, bottom: 10, right: 25, left: 25),
+
+                ///Search TextField
                 child: Container(
                   height: 50,
                   decoration: const BoxDecoration(boxShadow: [
@@ -98,10 +99,12 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                   ),
                 ),
               ),
+
+              ///List of Chips
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: SizedBox(
-                  height: 70,
+                  height: 60,
                   child: ListView(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
@@ -131,7 +134,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 8.0, left: 8, top: 8),
+                padding: const EdgeInsets.only(right: 8.0, left: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -160,8 +163,10 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                   ],
                 ),
               ),
+
+              ///Articles
               SizedBox(
-                height: 335,
+                height: 311,
                 child: ListView.builder(
                   itemCount: listOfArticleData.length,
                   scrollDirection: Axis.horizontal,
@@ -175,7 +180,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 8.0, left: 8, top: 8),
+                padding: const EdgeInsets.only(right: 8.0, left: 8,),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -204,6 +209,9 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
                   ],
                 ),
               ),
+
+
+             ///Static Articles
              Padding(
                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                child: Column(
@@ -444,6 +452,8 @@ class _MyAppHomePageState extends State<MyAppHomePage>  {
   }
 }
 
+
+///Custom Class for Articles
 class Articles extends StatelessWidget {
 
    ArticleData data;
@@ -498,7 +508,7 @@ class Articles extends StatelessWidget {
                         fontSize: 20,
                       ),
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
+                      maxLines: 2,
                     ),
                   ],
                 ),
