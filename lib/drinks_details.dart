@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/article_title.dart';
 
 class MyDrinksDetails extends StatefulWidget {
+
   const MyDrinksDetails({Key? key}) : super(key: key);
 
   @override
@@ -11,10 +11,14 @@ class MyDrinksDetails extends StatefulWidget {
 
 class _MyDrinksDetailsState extends State<MyDrinksDetails> {
 
+
+
   bool favourite=false;
+
 
   @override
   Widget build(BuildContext context) {
+    var arg=ModalRoute.of(context)?.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Back"),
@@ -45,10 +49,17 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              Images.fruits,
-              fit: BoxFit.contain,
+
+            ///Hero Widget Used
+            Hero(
+              tag: arg!,
+              child: Image.asset(
+                arg as String,
+                fit: BoxFit.contain,
+              ),
             ),
+
+            ///Content Title
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: Text(
@@ -81,6 +92,8 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
                 ),
                 const Text("6 hours ago",
                     style: TextStyle(fontSize: 15, color: Colors.grey)),
+
+                ///Favourite icon Button
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -91,6 +104,8 @@ class _MyDrinksDetailsState extends State<MyDrinksDetails> {
                 )
               ],
             ),
+
+            ///Content Description
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: Text(

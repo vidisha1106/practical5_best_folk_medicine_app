@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/article_title.dart';
+import 'package:practical5_best_folk_medicine_app/model/productModel.dart';
 
 class MyStorePage extends StatefulWidget {
   const MyStorePage({Key? key}) : super(key: key);
@@ -11,48 +12,48 @@ class MyStorePage extends StatefulWidget {
 }
 
 class _MyStorePageState extends State<MyStorePage> {
-  List<Widget> productItems = [
-    CustomOutlinedButton(
+
+  ///List of Products
+  List<ProductModel> products = [
+    const ProductModel(
       image: Images.productImage1,
       productTitle: ProductTitle.product1,
     ),
-    CustomOutlinedButton(
+    const ProductModel(
       image: Images.productImage2,
       productTitle: ProductTitle.product2,
     ),
-    CustomOutlinedButton(
+    const ProductModel(
       image: Images.productImage3,
       productTitle: ProductTitle.product3,
     ),
-    CustomOutlinedButton(
+    const ProductModel(
       image: Images.productImage4,
       productTitle: ProductTitle.product4,
     ),
-    CustomOutlinedButton(
-      image: Images.productImage5,
-      productTitle: ProductTitle.product5,
-    ),
-    CustomOutlinedButton(
-      image: Images.productImage6,
-      productTitle: ProductTitle.product6,
-    ),
-    CustomOutlinedButton(
-      image: Images.productImage7,
-      productTitle: ProductTitle.product7,
-    ),
   ];
+
+
+  ///List of Filtered Products
+  List filteredProducts = [];
+
+  @override
+  void initState() {
+    filteredProducts = products;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 8.0),
           child: Text("Shop"),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
             fontFamily: 'Times New Roman',
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -62,9 +63,11 @@ class _MyStorePageState extends State<MyStorePage> {
         children: [
           Padding(
             padding:
-                const EdgeInsets.only(top: 25, bottom: 5, right: 25, left: 25),
+                const EdgeInsets.only(top: 10, bottom: 5, right: 25, left: 25),
+
+            ///Search TextField
             child: Container(
-              height: 75,
+              height: 70,
               decoration: const BoxDecoration(boxShadow: [
                 BoxShadow(
                     color: Color(0xffe4e4e4),
@@ -79,12 +82,25 @@ class _MyStorePageState extends State<MyStorePage> {
                 onTapOutside: (event) {
                   FocusScope.of(context).unfocus();
                 },
+                onChanged: (value){
+                  setState(() {
+                    filteredProducts = [];
+                  });
+                  products.forEach((product){
+                    if(product.productTitle.toLowerCase().contains(value.toLowerCase())){
+                      setState(() {
+                        filteredProducts.add(product);
+                      });
+                    }
+                  });
+                },
                 textInputAction: TextInputAction.done,
                 inputFormatters: [
                   FilteringTextInputFormatter.singleLineFormatter
                 ],
                 keyboardAppearance: Brightness.dark,
                 decoration: const InputDecoration(
+                  //isDense: true,
                   enabledBorder:
                       OutlineInputBorder(borderSide: BorderSide.none),
                   focusedBorder:
@@ -102,12 +118,16 @@ class _MyStorePageState extends State<MyStorePage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: GridView.count(
-                shrinkWrap: true,
                 crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
+                childAspectRatio: 150 / 250,
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 15,
                 children: List.generate(
-                    productItems.length, (index) => productItems[index]),
+                  filteredProducts.length,
+                  (index) => CustomOutlinedButton(image: filteredProducts[index].image,productTitle: filteredProducts[index].productTitle,),
+                ),
               ),
             ),
           )
@@ -118,8 +138,8 @@ class _MyStorePageState extends State<MyStorePage> {
 }
 
 class CustomOutlinedButton extends StatelessWidget {
-  final String image;
-  final String productTitle;
+   final String image;
+   final String productTitle;
 
   const CustomOutlinedButton({
     super.key,
@@ -130,18 +150,24 @@ class CustomOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      child: Column(
-        children: [
-          Expanded(flex: 4, child: Image.asset(image, height: 250, width: 100)),
-          Expanded(
-            flex: 1,
-            child: Text(
-              productTitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, color: Colors.black54),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(flex: 4, child: Image.asset(image)),
+            const SizedBox(
+              height: 15,
             ),
-          )
-        ],
+            Expanded(
+              flex: 1,
+              child: Text(
+                productTitle,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+            )
+          ],
+        ),
       ),
       onPressed: () {},
     );

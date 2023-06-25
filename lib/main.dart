@@ -1,27 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:practical5_best_folk_medicine_app/app_constants/app_images.dart';
 import 'package:practical5_best_folk_medicine_app/favourite.dart';
 import 'package:practical5_best_folk_medicine_app/home.dart';
+import 'package:practical5_best_folk_medicine_app/practical_6/decrement.dart';
+import 'package:practical5_best_folk_medicine_app/practical_6/increment.dart';
 import 'package:practical5_best_folk_medicine_app/settings.dart';
 import 'package:practical5_best_folk_medicine_app/store.dart';
 
+import 'drinks_details.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp( const MyApp());
 }
+
+GlobalKey<NavigatorState> navigatorKey=GlobalKey<NavigatorState>();
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      navigatorKey: navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
+      navigatorObservers: [
+        routeObserver
+      ],
+      routes: {
+        '/ArticleDetails' : (context) => MyDrinksDetails(),
+        '/DecrementScreen' : (context) => DecrementScreen(),
+        '/MainPage' : (context) => MyHomePage()
+      },
       debugShowCheckedModeBanner: false,
     );
   }
@@ -36,18 +50,19 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with RouteAware{
 
   List<Widget> pages = [
-    MyAppHomePage(),
-    MyStorePage(),
-    MyFavouritePage(),
-    MySettingsPage(),
+    const MyAppHomePage(),
+    const MyStorePage(),
+    const MyFavouritePage(),
+    const MySettingsPage(),
+    IncrementScreen(),
   ];
 
   int cIndex=0;
 
-  List<String> bottomNavigationBarItem=["Home","Store","Favourite","Settings","Search"];
+  List<String> bottomNavigationBarItem=["Home","Store","Favourite","Settings","+/-"];
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         type: BottomNavigationBarType.fixed,
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-          unselectedIconTheme: IconThemeData(
+          unselectedIconTheme: const IconThemeData(
             color: Colors.grey,
             size: 25,
           ),
@@ -75,17 +90,25 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Image.asset(Images.home,height: 25,width: 25,color: Colors.grey),
             label: "Home",activeIcon: Image.asset(Images.home,height: 25,width: 25,color: Colors.black),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.local_grocery_store_sharp),
               label: "Store",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.star),
               label: "Favourite"
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: "Settings"
+          ),
+          const BottomNavigationBarItem(
+              icon: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,children: [
+                Icon(Icons.add),
+                Icon(Icons.remove)
+              ]),
+              label: "Inc/Dec"
           ),
         ]
         )
